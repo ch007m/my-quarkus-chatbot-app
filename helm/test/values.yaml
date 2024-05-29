@@ -1,0 +1,18 @@
+app:
+  name: my-quarkus-chatbot-app
+  namespace: cmoullia
+  virtualMachineName: quarkus-dev
+  virtualMachineNamespace: cmoullia
+  cluster:    #
+
+git:
+  branch: main
+  repo: github.com
+  org: ch007m
+  name: my-quarkus-chatbot-app
+
+image:
+  url: quay.io/ch007m/my-quarkus-chatbot
+  registry:  # NOT USED
+  organization:  # NOT USED
+  name:  # NOT USED

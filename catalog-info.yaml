@@ -1,0 +1,33 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-quarkus-chatbot-app
+  description: A cool quarkus app
+  annotations:
+    argocd/app-name: my-quarkus-chatbot-app-bootstrap
+    backstage.io/kubernetes-id: my-quarkus-chatbot-app
+    # It must be commented otherwise we cannot see the Tekton pipelines resources
+    # backstage.io/kubernetes-namespace: cmoullia
+    backstage.io/source-location: url:https://github.com/ch007m/my-quarkus-chatbot-app
+    # The janus-idp.io/tekton allows to set the boolean value: isTektonCIAvailable which is used within the UI to enable/disable the TektonCIComponent
+    janus-idp.io/tekton: my-quarkus-chatbot-app
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: ch007m/
+    # See: topology annotation: https://github.com/janus-idp/backstage-plugins/tree/main/plugins/topology
+    app.kubernetes.io/name: quarkus
+    app.quarkus.io/quarkus-version: "3.11"
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://my-quarkus-chatbot-app-cmoullia.apps.qshift.snowdrop.dev/
+      title: Quarkus application url
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: user:default/guest
+  dependsOn:
+    - component:default/my-quarkus-todo-app
+  consumesApis: [api:default/my-quarkus-todo-app-api]

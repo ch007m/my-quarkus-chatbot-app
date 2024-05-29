@@ -1,0 +1,6 @@
+site_name: my-quarkus-chatbot-app
+
+docs_dir: docs
+
+nav:
+  - Home: index.md
